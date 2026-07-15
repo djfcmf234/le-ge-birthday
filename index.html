@@ -144,32 +144,7 @@ canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-event
 </div>
 
 
-<script>
-// ??? TIME GATE: unlocks 2026-07-15 12:00 CST ???
-(function(){
-var unlock = new Date("2026-07-15T12:00:00+08:00").getTime();function check(){
-var now = Date.now();
-if(now >= unlock){
-document.getElementById("locked").style.display = "none";
-document.getElementById("mainScroll").style.display = "";
-document.getElementById("langBtn").style.display = "";
-document.querySelector("canvas").style.display = "";
-return;
-}
-var left = Math.max(0, unlock - now);
-var h = Math.floor(left/3600000);
-var m = Math.floor((left%3600000)/60000);
-var s = Math.floor((left%60000)/1000);
-document.getElementById("countdownLock").textContent = 
-  String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
-setTimeout(check, 1000);
-}
-document.getElementById("mainScroll").style.display = "none";
-document.getElementById("langBtn").style.display = "none";
-document.querySelector("canvas").style.display = "none";
-check();
-})();
-</script>
+
 <style>
 
 <div class="sub">12:00 准时开启，敬请期待 ✨</div>
