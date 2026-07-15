@@ -135,6 +135,47 @@ canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-event
 </style>
 </head>
 <body>
+
+<script>
+// ??? TIME GATE: unlocks 2026-07-15 12:00 CST ???
+(function(){
+var unlock = new Date("2026-07-15T12:00:00+08:00").getTime();
+function check(){
+var now = Date.now();
+if(now >= unlock){
+document.getElementById("locked").style.display = "none";
+document.getElementById("mainScroll").style.display = "";
+document.getElementById("langBtn").style.display = "";
+document.querySelector("canvas").style.display = "";
+return;
+}
+var left = Math.max(0, unlock - now);
+var h = Math.floor(left/3600000);
+var m = Math.floor((left%3600000)/60000);
+var s = Math.floor((left%60000)/1000);
+document.getElementById("countdownLock").textContent = 
+  String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+setTimeout(check, 1000);
+}
+document.getElementById("mainScroll").style.display = "none";
+document.getElementById("langBtn").style.display = "none";
+document.querySelector("canvas").style.display = "none";
+check();
+})();
+</script>
+<style>
+#locked{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;font-family:"Segoe UI",system-ui,sans-serif;text-align:center}
+#locked h1{font-size:clamp(28px,6vw,48px);background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 3s ease infinite;margin-bottom:12px}
+#locked .timer{font-size:clamp(40px,10vw,72px);font-weight:900;color:#feca57;margin:16px 0;font-variant-numeric:tabular-nums;letter-spacing:4px}
+#locked .sub{color:rgba(255,255,255,.5);font-size:clamp(13px,2.5vw,16px);margin-top:8px}
+</style>
+<div id="locked">
+<h1>?? ??????</h1>
+<div class="timer" id="countdownLock">--:--:--</div>
+<div class="sub">12:00 ????????? ?</div>
+</div>
+
+
 <canvas id="confetti"></canvas>
 <button class="lang-toggle" id="langBtn" title="Switch to Chinese">CN</button>
 <div class="main-scroll" id="mainScroll">
