@@ -43,11 +43,11 @@ canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-event
 .cake-hint{color:rgba(255,255,255,.45);font-size:11px;margin-top:4px;transition:opacity .3s}
 .games-title{color:rgba(255,255,255,.55);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .games-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%}
-.game-card{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:8px 4px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;text-align:center;cursor:pointer;transition:all .2s;overflow:hidden;color:#fff}
+.game-card{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:6px 3px;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;cursor:pointer;transition:all .2s;overflow:hidden;color:#fff}
 .game-card:active{transform:scale(.93);background:rgba(255,255,255,.14)}
-.game-card .icon{font-size:clamp(26px,6.5vw,36px);display:block;line-height:1}
-.game-card .name{font-size:clamp(8px,1.8vw,10px);font-weight:600;color:#fff;line-height:1.1;word-break:keep-all;padding:0 1px}
-.game-card .best{font-size:clamp(6px,1.4vw,8px);color:rgba(255,255,255,.45);line-height:1}
+.game-card .icon{font-size:clamp(30px,7vw,42px);display:block;line-height:1}
+.game-card .name{font-size:clamp(11px,2.5vw,14px);font-weight:700;color:#fff;line-height:1.15;word-break:keep-all;padding:0 2px}
+.game-card .best{font-size:clamp(9px,1.8vw,11px);color:rgba(255,255,255,.5);line-height:1}
 .game-overlay{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.93);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
 .game-overlay.active{opacity:1;pointer-events:auto}
 .game-header{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;color:#fff;z-index:5}
@@ -115,7 +115,7 @@ canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-event
 @keyframes sparklePop{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0)}}
 .balloon{position:fixed;bottom:-120px;z-index:5;font-size:clamp(36px,8vw,56px);animation:floatUp linear infinite;pointer-events:none}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0deg);opacity:.9}80%{opacity:.7}100%{transform:translateY(-110vh) rotate(30deg);opacity:0}}
-@media(min-width:420px){.dpad-btn{width:64px;height:64px;font-size:24px}.dpad{grid-template-columns:64px 64px 64px;grid-template-rows:64px 64px 64px}.games-grid{grid-template-columns:repeat(4,1fr);gap:6px}.game-card .icon{font-size:clamp(22px,5vw,28px)}.game-card .name{font-size:clamp(7px,1.6vw,9px)}}
+@media(min-width:420px){.dpad-btn{width:64px;height:64px;font-size:24px}.dpad{grid-template-columns:64px 64px 64px;grid-template-rows:64px 64px 64px}.games-grid{grid-template-columns:repeat(4,1fr);gap:6px}.game-card .icon{font-size:clamp(26px,5.5vw,34px)}.game-card .name{font-size:clamp(10px,2.2vw,12px)}}
 @media(max-width:340px){.dpad-btn{width:46px;height:46px;font-size:18px;border-radius:10px}.dpad{grid-template-columns:46px 46px 46px;grid-template-rows:46px 46px 46px;bottom:12px}}
 
 .bubble-pop{position:absolute;font-size:30px;pointer-events:none;animation:bubblePop .4s ease-out forwards;z-index:5}
