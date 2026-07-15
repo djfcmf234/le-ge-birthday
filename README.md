@@ -75,4 +75,4 @@ cd le-ge-birthday
 ---
 
 Made with ?? for a special friend / 为一个特别的朋友而做
-Private project. If you want to use it, please @ me.
+Private project. If you want to make any changes,  Just @ me in the README
