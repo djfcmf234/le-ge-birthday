@@ -538,33 +538,19 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
 
 <script>
-(function(){
-var unlock = new Date("2026-07-15T12:00:00+08:00").getTime();
-var main = document.getElementById("mainScroll");
-var lang = document.getElementById("langBtn");
-var cnv = document.querySelector("canvas");
-var locked = document.getElementById("locked");
-var timer = document.getElementById("countdownLock");
-function tick(){
-var now = Date.now();
-var left = unlock - now;
+var _unlock = new Date("2026-07-15T12:00:00+08:00").getTime();
+(function tick(){
+var left = _unlock - Date.now();
 if(left <= 0){
-locked.style.display = "none";
-main.style.display = "";
-lang.style.display = "";
-cnv.style.display = "";
+document.getElementById("locked").style.display = "none";
 return;
 }
 var h = Math.floor(left/3600000);
 var m = Math.floor((left%3600000)/60000);
 var s = Math.floor((left%60000)/1000);
-timer.textContent = String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+document.getElementById("countdownLock").textContent = 
+  String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
 setTimeout(tick, 200);
-}
-main.style.display = "none";
-lang.style.display = "none";
-cnv.style.display = "none";
-tick();
 })();
 </script>
 
