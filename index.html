@@ -143,14 +143,6 @@ canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-event
 <div class="sub">12:00 &#20934;&#26102;&#24320;&#21551;&#65292;&#25964;&#35831;&#26399;&#24453; &#10024;</div>
 </div>
 
-
-
-<style>
-
-<div class="sub">12:00 准时开启，敬请期待 ✨</div>
-</div>
-
-
 <canvas id="confetti"></canvas>
 <button class="lang-toggle" id="langBtn" title="Switch to Chinese">CN</button>
 <div class="main-scroll" id="mainScroll">
@@ -539,19 +531,18 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js")}
 
 <script>
 var _unlock = new Date("2026-07-15T12:00:00+08:00").getTime();
-(function tick(){
+var _timer = document.getElementById("countdownLock");
+var _locked = document.getElementById("locked");
+function _tick(){
 var left = _unlock - Date.now();
-if(left <= 0){
-document.getElementById("locked").style.display = "none";
-return;
-}
+if(left <= 0){ _locked.style.display = "none"; return; }
 var h = Math.floor(left/3600000);
 var m = Math.floor((left%3600000)/60000);
 var s = Math.floor((left%60000)/1000);
-document.getElementById("countdownLock").textContent = 
-  String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
-setTimeout(tick, 200);
-})();
+_timer.textContent = String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+setTimeout(_tick, 200);
+}
+_tick();
 </script>
 
 </body>
