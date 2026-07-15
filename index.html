@@ -132,9 +132,17 @@ canvas#confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-event
 @keyframes spinAnim{0%{transform:translateY(-60px);opacity:.5}50%{opacity:1}100%{transform:translateY(0);opacity:1}}
 .spin-reel{display:inline-block;animation:spinAnim .15s ease-out}
 
+#locked{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;font-family:"Segoe UI",system-ui,sans-serif;text-align:center}#locked h1{font-size:clamp(28px,6vw,48px);background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 3s ease infinite;margin-bottom:12px}#locked .timer{font-size:clamp(40px,10vw,72px);font-weight:900;color:#feca57;margin:16px 0;font-variant-numeric:tabular-nums;letter-spacing:4px}#locked .sub{color:rgba(255,255,255,.5);font-size:clamp(13px,2.5vw,16px);margin-top:8px}
 </style>
 </head>
 <body>
+
+<div id="locked">
+<h1>&#127856; &#24778;&#21916;&#21363;&#23558;&#25581;&#26195;</h1>
+<div class="timer" id="countdownLock">--:--:--</div>
+<div class="sub">12:00 &#20934;&#26102;&#24320;&#21551;&#65292;&#25964;&#35831;&#26399;&#24453; &#10024;</div>
+</div>
+
 
 <script>
 // ??? TIME GATE: unlocks 2026-07-15 12:00 CST ???
@@ -163,14 +171,7 @@ check();
 })();
 </script>
 <style>
-#locked{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:#fff;font-family:"Segoe UI",system-ui,sans-serif;text-align:center}
-#locked h1{font-size:clamp(28px,6vw,48px);background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 3s ease infinite;margin-bottom:12px}
-#locked .timer{font-size:clamp(40px,10vw,72px);font-weight:900;color:#feca57;margin:16px 0;font-variant-numeric:tabular-nums;letter-spacing:4px}
-#locked .sub{color:rgba(255,255,255,.5);font-size:clamp(13px,2.5vw,16px);margin-top:8px}
-</style>
-<div id="locked">
-<h1>🎂 惊喜即将揭晓</h1>
-<div class="timer" id="countdownLock">--:--:--</div>
+
 <div class="sub">12:00 准时开启，敬请期待 ✨</div>
 </div>
 
@@ -560,6 +561,38 @@ syncLang();
 <script>
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
+
+<script>
+(function(){
+var unlock = new Date("2026-07-15T12:00:00+08:00").getTime();
+var main = document.getElementById("mainScroll");
+var lang = document.getElementById("langBtn");
+var cnv = document.querySelector("canvas");
+var locked = document.getElementById("locked");
+var timer = document.getElementById("countdownLock");
+function tick(){
+var now = Date.now();
+var left = unlock - now;
+if(left <= 0){
+locked.style.display = "none";
+main.style.display = "";
+lang.style.display = "";
+cnv.style.display = "";
+return;
+}
+var h = Math.floor(left/3600000);
+var m = Math.floor((left%3600000)/60000);
+var s = Math.floor((left%60000)/1000);
+timer.textContent = String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+setTimeout(tick, 200);
+}
+main.style.display = "none";
+lang.style.display = "none";
+cnv.style.display = "none";
+tick();
+})();
+</script>
+
 </body>
 </html>
 
