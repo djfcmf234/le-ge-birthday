@@ -1,8 +1,9 @@
-# ?? Le Ge Birthday / 朋友生日
+# ?? friand Birthday / 朋友生日
 
 > A surprise birthday page with 27 mini-games. Unlocks at 12:00 on July 15, 2026.
 > 一个拥有27个小游戏的惊喜生日页面。2026年7月15日12:00准时解锁。
-
+> Please download it on your friend's birthday. Maybe this is the best gift for your friend.
+> 请在你朋友生日时下载，可能这是给你朋友最好的礼物
 ---
 
 ## ?? Games / 游戏列表
